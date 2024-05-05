@@ -1,3 +1,10 @@
 az cosmosdb show --name <cosmos-db-account-name> --resource-group <resource-group-name> --subscription <subscription-id> --query "locations[*].name"
 
 az monitor metrics list --resource "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<cosmos-db-account-name>" --metric "TotalRequestUnits" --aggregation "Maximum" --interval PT1H --start-time "2024-04-01T00:00:00Z" --end-time "2024-04-30T00:00:00Z"
+# list all the available metrics
+az monitor metrics list-definitions --resource "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<cosmos-db-account-name>"
+# check settings
+az cosmosdb show --name <cosmos-db-account-name> --resource-group <resource-group-name> --query "properties.enableAutomaticScaling"
+
+# show all settings
+az cosmosdb show --name <cosmos-db-account-name> --resource-group <resource-group-name>
